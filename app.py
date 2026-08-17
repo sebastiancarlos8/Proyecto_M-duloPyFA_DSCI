@@ -13,9 +13,9 @@ if modulos == "Home":
   st.write("**Nombre completo:** David Sebastian Carlos Ipanaque")
   st.write("**Año:** 2026")
   st.subheader("Información general")
-  st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos. \nApasionado por la lógica, datos y programación""")
+  st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos. \nApasionado por la lógica, recursos humanos, uso de datos masivos y programación.""")
   st.subheader("Descripción del proyecto")
-  st.markdown("""Portafolio de ejercicios que muestran los conocimientos aplicados en Python, mediantes casuísticas de la vida cotidiana que implique el uso respecto a listas, registros con NumPy, arrays, DataFrame, librerías externas """)
+  st.markdown("""Portafolio de ejercicios que muestran los conocimientos aplicados en Python, mediantes casuísticas de la vida cotidiana que implique el uso respecto a listas, registros con NumPy, arrays, DataFrame, librerías externas y clases.""")
   st.subheader("Tecnologías utilizadas")
   st.markdown("""""")
   
