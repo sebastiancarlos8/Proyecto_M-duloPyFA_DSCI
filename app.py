@@ -15,7 +15,7 @@ if modulos == "Home":
   st.subheader("Información general")
   st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos, apasionado por la lógica, datos y programación""")
   st.subheader("Descripción del proyecto")
-
+  
 elif modulos == "Ejercicio 1":
   st.write("Bienvenido al módulo de Ejercicio 1")
 
