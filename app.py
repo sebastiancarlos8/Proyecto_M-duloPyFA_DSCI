@@ -13,7 +13,7 @@ if modulos == "Home":
   st.write("**Nombre completo:** David Sebastian Carlos Ipanaque")
   st.write("**Año:** 2026")
   st.subheader("Información general")
-  st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos, apasionado por la lógica, datos y programación""")
+  st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos. \nApasionado por la lógica, datos y programación""")
   st.subheader("Descripción del proyecto")
   
 elif modulos == "Ejercicio 1":
