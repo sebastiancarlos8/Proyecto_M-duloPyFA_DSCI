@@ -9,11 +9,12 @@ if modulos == "Home":
   st.title("Trabajo Práctico - Módulo Python Fundamentals")
   st.image("Python_logo.png", width = 500)
   st.subheader("Módulo: Especialización en Python for Analytics")
-  st.subheader("Elaborado por:")
-  st.write("David Sebastian Carlos Ipanaque")
+  st.subheader("Elaborado por")
+  st.write("**Nombre completo:** David Sebastian Carlos Ipanaque")
+  st.write("**Año:** 2026")
   st.subheader("Información general")
-  st.text("Información general: Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos dentro del sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos")
-  st.markdown("2026")
+  st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos, apasionado por la lógica, datos y programación""")
+  st.subheader("Descripción del proyecto")
 
 elif modulos == "Ejercicio 1":
   st.write("Bienvenido al módulo de Ejercicio 1")
