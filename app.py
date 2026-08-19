@@ -22,6 +22,71 @@ if modulos == "Home":
 elif modulos == "Ejercicio 1":
   st.title("Bienvenido al módulo de Ejercicio 1 – Flujo de caja con listas")
 
+  # -------------------------
+  # Registro del movimiento
+  # -------------------------
+  
+  st.session_state.flujos = []
+
+  Concepto = st.text_input("Concepto")
+  Tipo = st.selectbox("Tipo de movimiento",["Ingreso","Gasto"])
+  Monto = st.number_input("Monto",min_value=0.0, step = 0.01, format="%.2f")
+  
+  if st.button("Registrar movimiento"):
+
+    flujo = {
+      "Concepto": Concepto,
+      "Tipo": Tipo,
+      "Monto": Monto
+    }
+
+    st.session_state.flujos.append(flujo)
+
+    st.success("Movimiento registrado de manera correcta")
+
+  # -------------------------
+  # Cálculos
+  # -------------------------
+
+  total_ingresos = sum(
+    flujo["monto"]
+    for flujo in st.session_state.movimientos
+    if flujo["tipo"] == "Ingreso"
+  )
+
+  total_gastos = sum(
+    flujo["monto"]
+    for flujo in st.session_state.movimientos
+    if flujo["tipo"] == "Gasto"
+  )
+
+  saldo_final = total_ingresos - total_gastos
+
+  
+  st.subheader("Flujo de caja")
+
+  st.subheader("Resumen")
+
+  col1, col2, col3 = st.columns(3)
+
+  with col1:
+      st.metric("Total ingresos", f"S/ {total_ingresos:.2f}")
+
+  with col2:
+      st.metric("Total gastos", f"S/ {total_gastos:.2f}")
+
+  with col3:
+      st.metric("Saldo final", f"S/ {saldo_final:.2f}")
+
+
+  for flujo in st.session_state.flujos:
+    st.write(
+      f"**{flujo['Concepto']}** | "
+      f"{flujo['Tipo']} | "
+      f"S/ {flujo['Monto']:.2f}"
+    )
+
+
 elif modulos == "Ejercicio 2":
   st.write("Bienvenido al módulo de Ejercicio 2 – Registro con NumPy, arrays y DataFrame")
 
