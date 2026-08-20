@@ -25,24 +25,39 @@ elif modulos == "Ejercicio 1":
   # -------------------------
   # Registro del movimiento
   # -------------------------
-  
-  st.session_state.flujos = []
 
+  if "flujos" not in st.session_state:
+    st.session_state.flujos = []
+
+  # Variables
+
+  st.subheader("Registro del movimiento")
+  
   Concepto = st.text_input("Concepto")
   Tipo = st.selectbox("Tipo de movimiento",["Ingreso","Gasto"])
   Monto = st.number_input("Monto",min_value=0.0, step = 0.01, format="%.2f")
   
   if st.button("Registrar movimiento"):
 
-    flujo = {
-      "Concepto": Concepto,
-      "Tipo": Tipo,
-      "Monto": Monto
-    }
+  # Validación de variables
 
-    st.session_state.flujos.append(flujo)
+    if Concepto.strip() == "":
+      st.error("Debe ingresar un concepto")
 
-    st.success("Movimiento registrado de manera correcta")
+    elif Monto <= 0:
+      st.error("El monto debe ser mayor que S/ 0.00.")
+
+    else:
+      
+      flujo = {
+        "Concepto": Concepto,
+        "Tipo": Tipo,
+        "Monto": Monto
+      }
+
+      st.session_state.flujos.append(flujo)
+
+      st.success("Movimiento registrado de manera correcta")
 
   # -------------------------
   # Cálculos
@@ -62,6 +77,7 @@ elif modulos == "Ejercicio 1":
 
   saldo_final = total_ingresos - total_gastos
 
+  # Resumen de flujos
   
   st.subheader("Flujo de caja")
 
@@ -79,12 +95,17 @@ elif modulos == "Ejercicio 1":
       st.metric("Saldo final", f"S/ {saldo_final:.2f}")
 
 
-  for flujo in st.session_state.flujos:
-    st.write(
-      f"**{flujo['Concepto']}** | "
-      f"{flujo['Tipo']} | "
-      f"S/ {flujo['Monto']:.2f}"
-    )
+  st.subheader("Flujos realizado")
+  
+  if len(st.session_state.flujos) > 0:
+        st.dataframe(
+          st.session_state.flujos,
+          use_container_width=True,
+          hide_index=True
+      )
+  
+  else:
+    st.info("No hay movimientos registrados.")
 
 
 elif modulos == "Ejercicio 2":
