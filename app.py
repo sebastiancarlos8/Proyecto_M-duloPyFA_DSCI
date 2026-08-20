@@ -49,15 +49,15 @@ elif modulos == "Ejercicio 1":
   # -------------------------
 
   total_ingresos = sum(
-    flujo["monto"]
+    flujo["Monto"]
     for flujo in st.session_state.flujos
-    if flujo["tipo"] == "Ingreso"
+    if flujo["Tipo"] == "Ingreso"
   )
 
   total_gastos = sum(
-    flujo["monto"]
+    flujo["Monto"]
     for flujo in st.session_state.flujos
-    if flujo["tipo"] == "Gasto"
+    if flujo["Tipo"] == "Gasto"
   )
 
   saldo_final = total_ingresos - total_gastos
