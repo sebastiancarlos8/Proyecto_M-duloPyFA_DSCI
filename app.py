@@ -186,8 +186,8 @@ elif modulos == "Ejercicio 2":
   
   # Muestra la tabla
   
-    st.subheader("Registros actualizados")
-    st.dataframe(df, use_container_width=True, hide_index=True)
+st.subheader("Registros actualizados")
+st.dataframe(df, use_container_width=True, hide_index=True)
 
 elif modulos == "Ejercicio 3":
   st.write("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
