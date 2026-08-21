@@ -200,7 +200,7 @@ elif modulos == "Ejercicio 2":
     st.info("Aún no hay datos registrados.")
 
 elif modulos == "Ejercicio 3":
-  st.tittle("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
+  st.title("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
 
   if "historico_inversion" not in st.session_state:
       st.session_state.historico_inversion = []
