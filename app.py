@@ -112,122 +112,122 @@ elif modulos == "Ejercicio 1":
 elif modulos == "Ejercicio 2":
   st.title("Bienvenido al módulo de Ejercicio 2 – Registro con NumPy, arrays y DataFrame")
 
-st.markdown("""En este ejercicio se registrarán productos utilizando widgets de Streamlit.
-La información será almacenada en arreglos de NumPy y posteriormente
-convertida en un DataFrame de pandas para mostrar los registros actualizados.
-""")
-
-if "nombres" not in st.session_state:
-    st.session_state.nombres = np.array([])
-
-if "categorias" not in st.session_state:
-    st.session_state.categorias = np.array([])
-
-if "precios" not in st.session_state:
-    st.session_state.precios = np.array([])
-
-if "cantidades" not in st.session_state:
-    st.session_state.cantidades = np.array([])
-
-if "totales" not in st.session_state:
-    st.session_state.totales = np.array([])
-
-# Registro de formulario
-
-st.subheader("Registro de producto")
-
-Nombre_producto = st.text_input(
-    "Nombre del producto"
-)
-
-Categoria = st.selectbox(
-    "Categoría",
-    [
-        "Computación",
-        "Accesorios",
-        "Electrónica",
-        "Oficina",
-        "Otros"
-    ]
-)
-
-Precio = st.number_input(
-    "Precio",
-    min_value=0.0,
-    step=0.01,
-    format="%.2f"
-)
-
-Cantidad = st.number_input(
-    "Cantidad",
-    min_value=1,
-    step=1
-)
-
-# Botón para agregar producto
-
-if st.button("Agregar producto"):
-
-    if Nombre_producto.strip() == "":
-        st.error("Debe ingresar el nombre del producto.")
-
-    elif Precio <= 0:
-        st.error("El precio debe ser mayor que 0.")
-
-    elif Cantidad <= 0:
-        st.error("La cantidad debe ser mayor que 0.")
-
-    else:
-
-        total = Precio * Cantidad
-
-        # Agregar información a los arrays
-        st.session_state.nombres = np.append(
-            st.session_state.nombres,
-            Nombre_producto
-        )
-
-        st.session_state.categorias = np.append(
-            st.session_state.categorias,
-            Categoria
-        )
-
-        st.session_state.precios = np.append(
-            st.session_state.precios,
-            Precio
-        )
-
-        st.session_state.cantidades = np.append(
-            st.session_state.cantidades,
-            Cantidad
-        )
-
-        st.session_state.totales = np.append(
-            st.session_state.totales,
-            total
-        )
-
-        st.success("Producto agregado correctamente.")
-
-# Crea el DataFrame
-
-    df = pd.DataFrame({
-        "Nombre del producto": st.session_state.nombres,
-        "Categoría": st.session_state.categorias,
-        "Precio": st.session_state.precios,
-        "Cantidad": st.session_state.cantidades,
-        "Total": st.session_state.totales
-    })
-
-# Muestra la tabla
-
-st.subheader("Registros actualizados")
-
-st.dataframe(
-    df,
-    use_container_width=True,
-    hide_index=True
-)
+  st.markdown("""En este ejercicio se registrarán productos utilizando widgets de Streamlit.
+  La información será almacenada en arreglos de NumPy y posteriormente
+  convertida en un DataFrame de pandas para mostrar los registros actualizados.
+  """)
+  
+  if "nombres" not in st.session_state:
+      st.session_state.nombres = np.array([])
+  
+  if "categorias" not in st.session_state:
+      st.session_state.categorias = np.array([])
+  
+  if "precios" not in st.session_state:
+      st.session_state.precios = np.array([])
+  
+  if "cantidades" not in st.session_state:
+      st.session_state.cantidades = np.array([])
+  
+  if "totales" not in st.session_state:
+      st.session_state.totales = np.array([])
+  
+  # Registro de formulario
+  
+  st.subheader("Registro de producto")
+  
+  Nombre_producto = st.text_input(
+      "Nombre del producto"
+  )
+  
+  Categoria = st.selectbox(
+      "Categoría",
+      [
+          "Computación",
+          "Accesorios",
+          "Electrónica",
+          "Oficina",
+          "Otros"
+      ]
+  )
+  
+  Precio = st.number_input(
+      "Precio",
+      min_value=0.0,
+      step=0.01,
+      format="%.2f"
+  )
+  
+  Cantidad = st.number_input(
+      "Cantidad",
+      min_value=1,
+      step=1
+  )
+  
+  # Botón para agregar producto
+  
+  if st.button("Agregar producto"):
+  
+      if Nombre_producto.strip() == "":
+          st.error("Debe ingresar el nombre del producto.")
+  
+      elif Precio <= 0:
+          st.error("El precio debe ser mayor que 0.")
+  
+      elif Cantidad <= 0:
+          st.error("La cantidad debe ser mayor que 0.")
+  
+      else:
+  
+          total = Precio * Cantidad
+  
+          # Agregar información a los arrays
+          st.session_state.nombres = np.append(
+              st.session_state.nombres,
+              Nombre_producto
+          )
+  
+          st.session_state.categorias = np.append(
+              st.session_state.categorias,
+              Categoria
+          )
+  
+          st.session_state.precios = np.append(
+              st.session_state.precios,
+              Precio
+          )
+  
+          st.session_state.cantidades = np.append(
+              st.session_state.cantidades,
+              Cantidad
+          )
+  
+          st.session_state.totales = np.append(
+              st.session_state.totales,
+              total
+          )
+  
+          st.success("Producto agregado correctamente.")
+  
+  # Crea el DataFrame
+  
+      df = pd.DataFrame({
+          "Nombre del producto": st.session_state.nombres,
+          "Categoría": st.session_state.categorias,
+          "Precio": st.session_state.precios,
+          "Cantidad": st.session_state.cantidades,
+          "Total": st.session_state.totales
+      })
+  
+  # Muestra la tabla
+  
+    st.subheader("Registros actualizados")
+    
+    st.dataframe(
+        df,
+        use_container_width=True,
+        hide_index=True
+    )
 
 elif modulos == "Ejercicio 3":
   st.write("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
