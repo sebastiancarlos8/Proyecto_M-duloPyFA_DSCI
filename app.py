@@ -136,21 +136,8 @@ elif modulos == "Ejercicio 2":
   
   st.subheader("Registro de producto")
   
-  Nombre_producto = st.text_input(
-      "Nombre del producto"
-  )
-  
-  Categoria = st.selectbox(
-      "Categoría",
-      [
-          "Computación",
-          "Accesorios",
-          "Electrónica",
-          "Oficina",
-          "Otros"
-      ]
-  )
-  
+  Nombre_producto = st.text_input("Nombre del producto")
+  Categoria = st.selectbox("Categoría",["Computación","Accesorios","Electrónica", "Oficina", "Otros"])
   Precio = st.number_input(
       "Precio",
       min_value=0.0,
@@ -167,52 +154,30 @@ elif modulos == "Ejercicio 2":
   # Botón para agregar producto
   
   if st.button("Agregar producto"):
+    
+    if Nombre_producto.strip() == "":
+      st.error("Debe ingresar el nombre del producto.")
   
-      if Nombre_producto.strip() == "":
-          st.error("Debe ingresar el nombre del producto.")
+    elif Precio <= 0:
+      st.error("El precio debe ser mayor que 0.")
   
-      elif Precio <= 0:
-          st.error("El precio debe ser mayor que 0.")
+    elif Cantidad <= 0:
+      st.error("La cantidad debe ser mayor que 0.")
   
-      elif Cantidad <= 0:
-          st.error("La cantidad debe ser mayor que 0.")
+    else:
+      total = Precio * Cantidad
   
-      else:
+  # Agregar información a los arrays
   
-          total = Precio * Cantidad
-  
-          # Agregar información a los arrays
-          st.session_state.nombres = np.append(
-              st.session_state.nombres,
-              Nombre_producto
-          )
-  
-          st.session_state.categorias = np.append(
-              st.session_state.categorias,
-              Categoria
-          )
-  
-          st.session_state.precios = np.append(
-              st.session_state.precios,
-              Precio
-          )
-  
-          st.session_state.cantidades = np.append(
-              st.session_state.cantidades,
-              Cantidad
-          )
-  
-          st.session_state.totales = np.append(
-              st.session_state.totales,
-              total
-          )
-  
-          st.success("Producto agregado correctamente.")
+      st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto)
+      st.session_state.categorias = np.append(st.session_state.categorias,Categoria)
+      st.session_state.precios = np.append(st.session_state.precios,Precio)
+      st.session_state.cantidades = np.append(st.session_state.cantidades,Cantidad)
+      st.session_state.totales = np.append(st.session_state.totales,total)
+      st.success("Producto agregado correctamente.")
   
   # Crea el DataFrame
-  
-      df = pd.DataFrame({
-          "Nombre del producto": st.session_state.nombres,
+    df = pd.DataFrame({"Nombre del producto": st.session_state.nombres,
           "Categoría": st.session_state.categorias,
           "Precio": st.session_state.precios,
           "Cantidad": st.session_state.cantidades,
@@ -222,12 +187,11 @@ elif modulos == "Ejercicio 2":
   # Muestra la tabla
   
     st.subheader("Registros actualizados")
-    
-    st.dataframe(
+        st.dataframe(
         df,
         use_container_width=True,
         hide_index=True
-    )
+        )
 
 elif modulos == "Ejercicio 3":
   st.write("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
