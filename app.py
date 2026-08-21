@@ -179,11 +179,12 @@ elif modulos == "Ejercicio 2":
   
   # Crea el DataFrame
   
-  df = pd.DataFrame({"Nombre del producto": st.session_state.nombres,
-                     "Categoría": st.session_state.categorias,
-                     "Precio": st.session_state.precios,
-                     "Cantidad": st.session_state.cantidades,
-                     "Total": st.session_state.totales
+  df = pd.DataFrame({
+      "Nombre del producto": st.session_state.nombres,
+      "Categoría": st.session_state.categorias,
+      "Precio": st.session_state.precios,
+      "Cantidad": st.session_state.cantidades,
+      "Total": st.session_state.totales
   })
   
   # Muestra la tabla
