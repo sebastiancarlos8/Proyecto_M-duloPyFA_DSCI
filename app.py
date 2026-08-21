@@ -280,5 +280,5 @@ elif modulos == "Ejercicio 3":
       st.write("Aún no hay resultados registrados.")
 
 else:
- st.write("Bienvenido al módulo de Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
+ st.title("Bienvenido al módulo de Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
   
