@@ -168,14 +168,14 @@ elif modulos == "Ejercicio 2":
     else:
       total = Precio * Cantidad
   
-  # Agregar información a los arrays
+      # Agregar información a los arrays
   
-  st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto)
-  st.session_state.categorias = np.append(st.session_state.categorias,Categoria)
-  st.session_state.precios = np.append(st.session_state.precios,Precio)
-  st.session_state.cantidades = np.append(st.session_state.cantidades,Cantidad)
-  st.session_state.totales = np.append(st.session_state.totales,total)
-  st.success("Producto agregado correctamente.")
+      st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto)
+      st.session_state.categorias = np.append(st.session_state.categorias,Categoria)
+      st.session_state.precios = np.append(st.session_state.precios,Precio)
+      st.session_state.cantidades = np.append(st.session_state.cantidades,Cantidad)
+      st.session_state.totales = np.append(st.session_state.totales,total)
+      st.success("Producto agregado correctamente.")
   
   # Crea el DataFrame
   
