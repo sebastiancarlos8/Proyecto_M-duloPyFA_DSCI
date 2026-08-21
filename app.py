@@ -113,10 +113,7 @@ elif modulos == "Ejercicio 2":
   
   st.title("Bienvenido al módulo de Ejercicio 2 – Registro con NumPy, arrays y DataFrame")
 
-  st.markdown("""En este ejercicio se registrarán productos utilizando widgets de Streamlit.
-  La información será almacenada en arreglos de NumPy y posteriormente
-  convertida en un DataFrame de pandas para mostrar los registros actualizados.
-  """)
+  st.markdown("""En este ejercicio se registrarán productos utilizando widgets de Streamlit. La información será almacenada en arreglos de NumPy y posteriormente convertida en un DataFrame de pandas para mostrar los registros actualizados.""")
   
   if "nombres" not in st.session_state:
       st.session_state.nombres = np.array([])
@@ -177,26 +174,26 @@ elif modulos == "Ejercicio 2":
       st.session_state.totales = np.append(st.session_state.totales,total)
       st.success("Producto agregado correctamente.")
   
-  df = pd.DataFrame({
-      "Nombre del producto": st.session_state.nombres,
-      "Categoría": st.session_state.categorias,
-      "Precio": st.session_state.precios,
-      "Cantidad": st.session_state.cantidades,
-      "Total": st.session_state.totales
-  })
-  
-  
-  # --------------------------------------------------
-  # Mostrar DataFrame
-  # --------------------------------------------------
-  
-  st.subheader("Registros actualizados")
-  
-  st.dataframe(
-      df,
-      use_container_width=True,
-      hide_index=True
-  )
+      df = pd.DataFrame({
+          "Nombre del producto": st.session_state.nombres,
+          "Categoría": st.session_state.categorias,
+          "Precio": st.session_state.precios,
+          "Cantidad": st.session_state.cantidades,
+          "Total": st.session_state.totales
+      })
+      
+      
+      # --------------------------------------------------
+      # Mostrar DataFrame
+      # --------------------------------------------------
+      
+      st.subheader("Registros actualizados")
+      
+      st.dataframe(
+          df,
+          use_container_width=True,
+          hide_index=True
+      )
 
 elif modulos == "Ejercicio 3":
   st.write("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
