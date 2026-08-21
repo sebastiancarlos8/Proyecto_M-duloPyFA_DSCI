@@ -189,15 +189,15 @@ elif modulos == "Ejercicio 2":
     # Mostrar DataFrame
     # --------------------------------------------------
       
-    st.subheader("Registros actualizados")
-    if not df.empty:
-        st.dataframe(
-            df,
-            use_container_width=True,
-            hide_index=True
-        )
-    else:
-        st.info("Aún no hay datos registrados.")
+  st.subheader("Registros actualizados")
+   if not df.empty:
+       st.dataframe(
+          df,
+          use_container_width=True,
+          hide_index=True
+       )
+   else:
+     st.info("Aún no hay datos registrados.")
 
 elif modulos == "Ejercicio 3":
   st.write("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
