@@ -202,6 +202,83 @@ elif modulos == "Ejercicio 2":
 elif modulos == "Ejercicio 3":
   st.write("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
 
+  if "historico_inversion" not in st.session_state:
+      st.session_state.historico_inversion = []
+  
+  st.subheader("Selección de función")
+  funcion = st.selectbox("Seleccione la función que desea ejecutar",["Valor futuro de una inversión"])
+    
+  st.subheader("Parámetros de la inversión")
+  capital_inicial = st.number_input(
+      "Capital inicial",
+      min_value=0.0,
+      step=100.0,
+      format="%.2f"
+  )
+  
+  aporte_mensual = st.number_input(
+      "Aporte mensual",
+      min_value=0.0,
+      step=50.0,
+      format="%.2f"
+  )
+  
+  tasa_anual = st.number_input(
+      "Tasa anual (%)",
+      min_value=0.0,
+      step=0.1,
+      format="%.2f"
+  )
+  
+  anios = st.number_input(
+      "Tiempo de inversión (años)",
+      min_value=1,
+      step=1
+  )
+  
+  
+  if st.button("Ejecutar función"):
+  
+      tasa_decimal = tasa_anual / 100
+  
+      resultado = valor_futuro_inversion(
+          capital_inicial,
+          aporte_mensual,
+          tasa_decimal,
+          int(anios)
+      )
+  
+      registro = {
+          "Función": funcion,
+          "Capital inicial": capital_inicial,
+          "Aporte mensual": aporte_mensual,
+          "Tasa anual (%)": tasa_anual,
+          "Años": int(anios),
+          "Valor futuro": resultado
+      }
+  
+      st.session_state.historico_inversion.append(registro)
+  
+      st.write("Resultado del cálculo:")
+  
+      st.write(f"El valor futuro estimado de la inversión es: "f"**S/ {resultado:,.2f}**")
+    
+  st.subheader("Histórico de resultados")
+    
+  df = pd.DataFrame(st.session_state.historico_inversion)
+    
+  if not df.empty:
+  
+      st.dataframe(
+          df,
+          use_container_width=True,
+          hide_index=True
+      )
+  
+  else:
+  
+      st.write("Aún no hay resultados registrados.")
+
 else:
  st.write("Bienvenido al módulo de Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
   
