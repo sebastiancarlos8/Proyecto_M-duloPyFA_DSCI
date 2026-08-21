@@ -178,7 +178,6 @@ elif modulos == "Ejercicio 2":
       st.success("Producto agregado correctamente.")
   
   # Crea el DataFrame
-  
   df = pd.DataFrame({
       "Nombre del producto": st.session_state.nombres,
       "Categoría": st.session_state.categorias,
