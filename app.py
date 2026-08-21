@@ -110,6 +110,7 @@ elif modulos == "Ejercicio 1":
 
 
 elif modulos == "Ejercicio 2":
+  
   st.title("Bienvenido al módulo de Ejercicio 2 – Registro con NumPy, arrays y DataFrame")
 
   st.markdown("""En este ejercicio se registrarán productos utilizando widgets de Streamlit.
@@ -169,21 +170,21 @@ elif modulos == "Ejercicio 2":
   
   # Agregar información a los arrays
   
-    st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto)
-    st.session_state.categorias = np.append(st.session_state.categorias,Categoria)
-    st.session_state.precios = np.append(st.session_state.precios,Precio)
-    st.session_state.cantidades = np.append(st.session_state.cantidades,Cantidad)
-    st.session_state.totales = np.append(st.session_state.totales,total)
-    st.success("Producto agregado correctamente.")
+  st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto)
+  st.session_state.categorias = np.append(st.session_state.categorias,Categoria)
+  st.session_state.precios = np.append(st.session_state.precios,Precio)
+  st.session_state.cantidades = np.append(st.session_state.cantidades,Cantidad)
+  st.session_state.totales = np.append(st.session_state.totales,total)
+  st.success("Producto agregado correctamente.")
   
   # Crea el DataFrame
   
   df = pd.DataFrame({"Nombre del producto": st.session_state.nombres,
-          "Categoría": st.session_state.categorias,
-          "Precio": st.session_state.precios,
-          "Cantidad": st.session_state.cantidades,
-          "Total": st.session_state.totales
-  })
+                     "Categoría": st.session_state.categorias,
+                     "Precio": st.session_state.precios,
+                     "Cantidad": st.session_state.cantidades,
+                     "Total": st.session_state.totales
+                    })
   
   # Muestra la tabla
   
