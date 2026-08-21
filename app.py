@@ -187,7 +187,7 @@ elif modulos == "Ejercicio 2":
       # Mostrar DataFrame
       # --------------------------------------------------
       
-      st.subheader("Registros actualizados")
+  st.subheader("Registros actualizados")
       
       st.dataframe(
           df,
