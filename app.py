@@ -184,7 +184,7 @@ elif modulos == "Ejercicio 2":
                      "Precio": st.session_state.precios,
                      "Cantidad": st.session_state.cantidades,
                      "Total": st.session_state.totales
-                    })
+  })
   
   # Muestra la tabla
   
