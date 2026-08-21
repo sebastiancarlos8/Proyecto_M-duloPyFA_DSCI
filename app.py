@@ -169,12 +169,12 @@ elif modulos == "Ejercicio 2":
   
   # Agregar información a los arrays
   
-      st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto)
-      st.session_state.categorias = np.append(st.session_state.categorias,Categoria)
-      st.session_state.precios = np.append(st.session_state.precios,Precio)
-      st.session_state.cantidades = np.append(st.session_state.cantidades,Cantidad)
-      st.session_state.totales = np.append(st.session_state.totales,total)
-      st.success("Producto agregado correctamente.")
+  st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto)
+  st.session_state.categorias = np.append(st.session_state.categorias,Categoria)
+  st.session_state.precios = np.append(st.session_state.precios,Precio)
+  st.session_state.cantidades = np.append(st.session_state.cantidades,Cantidad)
+  st.session_state.totales = np.append(st.session_state.totales,total)
+  st.success("Producto agregado correctamente.")
   
   # Crea el DataFrame
     df = pd.DataFrame({"Nombre del producto": st.session_state.nombres,
@@ -186,8 +186,8 @@ elif modulos == "Ejercicio 2":
   
   # Muestra la tabla
   
-    st.subheader("Registros actualizados")
-    st.dataframe(df, use_container_width=True, hide_index=True)
+  st.subheader("Registros actualizados")
+  st.dataframe(df, use_container_width=True, hide_index=True)
 
 elif modulos == "Ejercicio 3":
   st.write("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
