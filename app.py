@@ -297,72 +297,72 @@ elif modulos == "Ejercicio 3":
 else:
  st.title("Bienvenido al módulo de Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
 
-  if "empleados" not in st.session_state:
-      st.session_state.empleados = []
+ if "empleados" not in st.session_state:
+   st.session_state.empleados = []
 
-  opcion = st.selectbox("Selecciona una operación:",["Crear empleado","Ver empleados","Actualizar empleado","Eliminar empleado"])
+ opcion = st.selectbox("Selecciona una operación:",["Crear empleado","Ver empleados","Actualizar empleado","Eliminar empleado"])
 
-  # Opción Crear
+ # Opción Crear
 
-  if opcion == "Crear empleado":
+ if opcion == "Crear empleado":
 
-    st.header("Crear empleado")
+   st.header("Crear empleado")
 
-    nombre = st.text_input(
+   nombre = st.text_input(
         "Nombre del empleado"
-    )
+   )
 
-    salario_base = st.number_input(
+   salario_base = st.number_input(
         "Salario base",
         min_value=0.01,
         value=1000.00,
         step=100.00
-    )
+   )
 
-    porcentaje_bono = st.number_input(
+   porcentaje_bono = st.number_input(
         "Porcentaje de bono (%)",
         min_value=0.0,
         max_value=100.0,
         value=0.0,
         step=1.0
-    )
+   )
 
-    porcentaje_descuento = st.number_input(
+   porcentaje_descuento = st.number_input(
         "Porcentaje de descuento (%)",
         min_value=0.0,
         max_value=100.0,
         value=0.0,
         step=1.0
-    )
+   )
 
-    if st.button("Crear empleado"):
+   if st.button("Crear empleado"):
 
-        if nombre.strip() == "":
-            st.error("Debes ingresar el nombre del empleado.")
+       if nombre.strip() == "":
+           st.error("Debes ingresar el nombre del empleado.")
 
-        else:
+       else:
 
-            try:
+           try:
 
-                nuevo_empleado = Empleado(
+               nuevo_empleado = Empleado(
                     nombre=nombre,
                     salario_base=salario_base,
                     porcentaje_bono=porcentaje_bono,
                     porcentaje_descuento=porcentaje_descuento
-                )
+               )
 
-                st.session_state.empleados.append(
+               st.session_state.empleados.append(
                     nuevo_empleado
-                )
+               )
 
-                st.success(
+               st.success(
                     f"El empleado {nombre} fue creado correctamente."
-                )
+               )
 
-            except ValueError as e:
-                st.error(str(e))
+           except ValueError as e:
+               st.error(str(e))
 
-  # Opción Leer
+ # Opción Leer
 
   elif opcion == "Ver empleados":
 
