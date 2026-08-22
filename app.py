@@ -296,6 +296,4 @@ elif modulos == "Ejercicio 3":
 else:
  st.title("Bienvenido al módulo de Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
   
-  s
-  
 
