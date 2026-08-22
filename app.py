@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import 03 librería_funciones_proyecto1 as lf 
 
 st.sidebar.image("DMC.png", width = 100)
 st.sidebar.title("Contenido")
@@ -202,82 +203,95 @@ elif modulos == "Ejercicio 2":
 elif modulos == "Ejercicio 3":
   st.title("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
 
-  if "historico_inversion" not in st.session_state:
+  funcion = st.selectbox(
+    "Seleccione la función:",
+    ["calcular_valor_futuro"]
+  )
+
+  if "historial" not in st.session_state:
       st.session_state.historico_inversion = []
-  
-  st.subheader("Selección de función")
-  funcion = st.selectbox("Seleccione la función que desea ejecutar",["Valor futuro de una inversión"])
-    
-  st.subheader("Parámetros de la inversión")
-  capital_inicial = st.number_input(
-      "Capital inicial",
-      min_value=0.0,
-      step=100.0,
-      format="%.2f"
+   
+  st.subheader("Ingrese los datos de la inversión")
+  monto_inicial = st.number_input(
+    "Monto inicial ($)",
+    min_value=0.01,
+    value=1000.00,
+    step=100.00
   )
-  
-  aporte_mensual = st.number_input(
-      "Aporte mensual",
-      min_value=0.0,
-      step=50.0,
-      format="%.2f"
-  )
-  
-  tasa_anual = st.number_input(
+
+  tasa_anual_pct = st.number_input(
       "Tasa anual (%)",
-      min_value=0.0,
-      step=0.1,
-      format="%.2f"
+      min_value=0.01,
+      value=5.00,
+      step=0.5
   )
   
   anios = st.number_input(
-      "Tiempo de inversión (años)",
+      "Número de años",
+      min_value=0.1,
+      value=5.0,
+      step=0.5
+  )
+  
+  capitalizaciones_por_anio = st.number_input(
+      "Capitalizaciones por año",
       min_value=1,
+      value=12,
       step=1
   )
   
   
-  if st.button("Ejecutar función"):
+  if st.button("Calcular valor futuro"):
+
+    try:
+        resultado = calcular_valor_futuro(
+            monto_inicial,
+            tasa_anual_pct,
+            anios,
+            capitalizaciones_por_anio
+        )
+
+        # Mostrar resultado
+        st.success("Cálculo realizado correctamente")
+
+        st.write("### Resultado")
+
+        st.write(
+            f"**Valor futuro:** ${resultado['valor_futuro']:,.2f}"
+        )
+
+        st.write(
+            f"**Interés ganado:** ${resultado['interes_ganado']:,.2f}"
+        )
+
+        # Guardar resultado en el historial
+        registro = {
+            "Monto inicial": monto_inicial,
+            "Tasa anual (%)": tasa_anual_pct,
+            "Años": anios,
+            "Capitalizaciones/año": capitalizaciones_por_anio,
+            "Valor futuro": resultado["valor_futuro"],
+            "Interés ganado": resultado["interes_ganado"]
+        }
+
+        st.session_state.historial.append(registro)
+
+    except Exception as e:
+        st.error(f"Error: {e}")
   
-      tasa_decimal = tasa_anual / 100
-  
-      resultado = valor_futuro_inversion(
-          capital_inicial,
-          aporte_mensual,
-          tasa_decimal,
-          int(anios)
-      )
-  
-      registro = {
-          "Función": funcion,
-          "Capital inicial": capital_inicial,
-          "Aporte mensual": aporte_mensual,
-          "Tasa anual (%)": tasa_anual,
-          "Años": int(anios),
-          "Valor futuro": resultado
-      }
-  
-      st.session_state.historico_inversion.append(registro)
-  
-      st.write("Resultado del cálculo:")
-  
-      st.write(f"El valor futuro estimado de la inversión es: "f"**S/ {resultado:,.2f}**")
+  st.subheader("📊 Histórico de resultados")
     
-  st.subheader("Histórico de resultados")
-    
-  df = pd.DataFrame(st.session_state.historico_inversion)
-    
-  if not df.empty:
+  if len(st.session_state.historial) > 0:
+  
+      df_historial = pd.DataFrame(st.session_state.historial)
   
       st.dataframe(
-          df,
-          use_container_width=True,
-          hide_index=True
+          df_historial,
+          use_container_width=True
       )
   
   else:
-  
-      st.write("Aún no hay resultados registrados.")
+      st.info("Todavía no se han realizado cálculos.")
 
 else:
  st.title("Bienvenido al módulo de Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
