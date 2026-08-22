@@ -276,8 +276,8 @@ elif modulos == "Ejercicio 3":
 
         st.session_state.historial.append(registro)
 
-      except Exception as e:
-        st.error(f"Error: {e}")
+    except Exception as e:
+       st.error(f"Error: {e}")
   
   st.subheader("📊 Histórico de resultados")
     
