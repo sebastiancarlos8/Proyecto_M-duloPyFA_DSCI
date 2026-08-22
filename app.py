@@ -208,7 +208,7 @@ elif modulos == "Ejercicio 3":
     ["calcular_valor_futuro"]
   )
 
-  if "historial" not in st.session_state:
+  if "historico_inversion" not in st.session_state:
       st.session_state.historico_inversion = []
    
   st.subheader("Ingrese los datos de la inversión")
@@ -274,16 +274,16 @@ elif modulos == "Ejercicio 3":
             "Interés ganado": resultado["interes_ganado"]
         }
 
-        st.session_state.historial.append(registro)
+        st.session_state.historico_inversion.append(registro)
 
     except Exception as e:
        st.error(f"Error: {e}")
   
   st.subheader("📊 Histórico de resultados")
     
-  if len(st.session_state.historial) > 0:
+  if len(st.session_state.historico_inversion) > 0:
   
-      df_historial = pd.DataFrame(st.session_state.historial)
+      df_historial = pd.DataFrame(st.session_state.historico_inversion)
   
       st.dataframe(
           df_historial,
