@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import 03 librería_funciones_proyecto1 as lf 
+import librería_funciones_proyecto1 as lf 
 
 st.sidebar.image("DMC.png", width = 100)
 st.sidebar.title("Contenido")
