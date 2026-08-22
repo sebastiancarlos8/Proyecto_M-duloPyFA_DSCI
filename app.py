@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import libreria_funciones_proyecto1 as lf 
+import libreria_funciones_proyecto1 as lf
+from libreria_clases_proyecto1 import Empleado
 
 st.sidebar.image("DMC.png", width = 100)
 st.sidebar.title("Contenido")
@@ -295,5 +296,218 @@ elif modulos == "Ejercicio 3":
 
 else:
  st.title("Bienvenido al módulo de Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
-  
 
+  if "empleados" not in st.session_state:
+      st.session_state.empleados = []
+
+  opcion = st.selectbox("Selecciona una operación:",["Crear empleado","Ver empleados","Actualizar empleado","Eliminar empleado"])
+
+  # Opción Crear
+
+  if opcion == "Crear empleado":
+
+    st.header("Crear empleado")
+
+    nombre = st.text_input(
+        "Nombre del empleado"
+    )
+
+    salario_base = st.number_input(
+        "Salario base",
+        min_value=0.01,
+        value=1000.00,
+        step=100.00
+    )
+
+    porcentaje_bono = st.number_input(
+        "Porcentaje de bono (%)",
+        min_value=0.0,
+        max_value=100.0,
+        value=0.0,
+        step=1.0
+    )
+
+    porcentaje_descuento = st.number_input(
+        "Porcentaje de descuento (%)",
+        min_value=0.0,
+        max_value=100.0,
+        value=0.0,
+        step=1.0
+    )
+
+    if st.button("Crear empleado"):
+
+        if nombre.strip() == "":
+            st.error("Debes ingresar el nombre del empleado.")
+
+        else:
+
+            try:
+
+                nuevo_empleado = Empleado(
+                    nombre=nombre,
+                    salario_base=salario_base,
+                    porcentaje_bono=porcentaje_bono,
+                    porcentaje_descuento=porcentaje_descuento
+                )
+
+                st.session_state.empleados.append(
+                    nuevo_empleado
+                )
+
+                st.success(
+                    f"El empleado {nombre} fue creado correctamente."
+                )
+
+            except ValueError as e:
+                st.error(str(e))
+
+  # Opción Leer
+
+  elif opcion == "Ver empleados":
+
+    st.header("Lista de empleados")
+
+    if len(st.session_state.empleados) == 0:
+
+        st.info("No hay empleados registrados.")
+
+    else:
+
+        registros = []
+
+        for empleado in st.session_state.empleados:
+            registros.append(
+                empleado.resumen()
+            )
+
+        st.dataframe(
+            registros,
+            use_container_width=True,
+            hide_index=True
+        )
+
+  # Opción Actualizar
+
+  elif opcion == "Actualizar empleado":
+
+    st.header("Actualizar empleado")
+
+    if len(st.session_state.empleados) == 0:
+
+        st.info("No hay empleados registrados para actualizar.")
+
+    else:
+
+        nombres = [
+            empleado.nombre
+            for empleado in st.session_state.empleados
+        ]
+
+        nombre_seleccionado = st.selectbox(
+            "Selecciona el empleado:",
+            nombres
+        )
+
+        empleado = next(
+            empleado
+            for empleado in st.session_state.empleados
+            if empleado.nombre == nombre_seleccionado
+        )
+
+        nuevo_nombre = st.text_input(
+            "Nombre",
+            value=empleado.nombre
+        )
+
+        nuevo_salario = st.number_input(
+            "Salario base",
+            min_value=0.01,
+            value=float(empleado.salario_base),
+            step=100.00
+        )
+
+        nuevo_bono = st.number_input(
+            "Porcentaje de bono (%)",
+            min_value=0.0,
+            max_value=100.0,
+            value=float(empleado.porcentaje_bono),
+            step=1.0
+        )
+
+        nuevo_descuento = st.number_input(
+            "Porcentaje de descuento (%)",
+            min_value=0.0,
+            max_value=100.0,
+            value=float(empleado.porcentaje_descuento),
+            step=1.0
+        )
+
+        if st.button("Actualizar empleado"):
+
+            if nuevo_nombre.strip() == "":
+                st.error("El nombre no puede estar vacío.")
+
+            else:
+
+                try:
+
+                    empleado_actualizado = Empleado(
+                        nombre=nuevo_nombre,
+                        salario_base=nuevo_salario,
+                        porcentaje_bono=nuevo_bono,
+                        porcentaje_descuento=nuevo_descuento
+                    )
+
+                    indice = st.session_state.empleados.index(
+                        empleado
+                    )
+
+                    st.session_state.empleados[indice] = (
+                        empleado_actualizado
+                    )
+
+                    st.success(
+                        "Empleado actualizado correctamente."
+                    )
+
+                    st.rerun()
+
+                except ValueError as e:
+                    st.error(str(e))
+
+  # Opción eliminar
+
+  elif opcion == "Eliminar empleado":
+
+    st.header("Eliminar empleado")
+
+    if len(st.session_state.empleados) == 0:
+
+        st.info("No hay empleados registrados para eliminar.")
+
+    else:
+
+        nombres = [
+            empleado.nombre
+            for empleado in st.session_state.empleados
+        ]
+
+        nombre_eliminar = st.selectbox(
+            "Selecciona el empleado:",
+            nombres
+        )
+
+        if st.button("Eliminar empleado"):
+
+            st.session_state.empleados = [
+                empleado
+                for empleado in st.session_state.empleados
+                if empleado.nombre != nombre_eliminar
+            ]
+
+            st.success(
+                f"El empleado {nombre_eliminar} fue eliminado correctamente."
+            )
+
+            st.rerun()
