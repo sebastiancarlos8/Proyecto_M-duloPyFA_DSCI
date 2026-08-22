@@ -244,7 +244,7 @@ elif modulos == "Ejercicio 3":
   if st.button("Calcular valor futuro"):
 
     try:
-        resultado = calcular_valor_futuro(
+        resultado = lf.calcular_valor_futuro(
             monto_inicial,
             tasa_anual_pct,
             anios,
