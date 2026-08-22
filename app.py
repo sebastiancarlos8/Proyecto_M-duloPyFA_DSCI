@@ -364,150 +364,150 @@ else:
 
  # Opción Leer
 
-  elif opcion == "Ver empleados":
+ elif opcion == "Ver empleados":
 
-    st.header("Lista de empleados")
+   st.header("Lista de empleados")
 
-    if len(st.session_state.empleados) == 0:
+   if len(st.session_state.empleados) == 0:
 
-        st.info("No hay empleados registrados.")
+       st.info("No hay empleados registrados.")
 
-    else:
+   else:
 
-        registros = []
+       registros = []
 
-        for empleado in st.session_state.empleados:
-            registros.append(
-                empleado.resumen()
-            )
+       for empleado in st.session_state.empleados:
+           registros.append(
+               empleado.resumen()
+           )
 
-        st.dataframe(
+       st.dataframe(
             registros,
             use_container_width=True,
             hide_index=True
-        )
+       )
 
-  # Opción Actualizar
+ # Opción Actualizar
 
-  elif opcion == "Actualizar empleado":
+ elif opcion == "Actualizar empleado":
 
-    st.header("Actualizar empleado")
+   st.header("Actualizar empleado")
 
-    if len(st.session_state.empleados) == 0:
+   if len(st.session_state.empleados) == 0:
 
-        st.info("No hay empleados registrados para actualizar.")
+       st.info("No hay empleados registrados para actualizar.")
 
-    else:
+   else:
 
-        nombres = [
-            empleado.nombre
-            for empleado in st.session_state.empleados
-        ]
+       nombres = [
+           empleado.nombre
+           for empleado in st.session_state.empleados
+       ]
 
-        nombre_seleccionado = st.selectbox(
-            "Selecciona el empleado:",
-            nombres
-        )
+       nombre_seleccionado = st.selectbox(
+           "Selecciona el empleado:",
+           nombres
+       )
 
-        empleado = next(
-            empleado
-            for empleado in st.session_state.empleados
-            if empleado.nombre == nombre_seleccionado
-        )
+       empleado = next(
+           empleado
+           for empleado in st.session_state.empleados
+           if empleado.nombre == nombre_seleccionado
+       )
 
-        nuevo_nombre = st.text_input(
-            "Nombre",
-            value=empleado.nombre
-        )
+       nuevo_nombre = st.text_input(
+           "Nombre",
+           value=empleado.nombre
+       )
 
-        nuevo_salario = st.number_input(
-            "Salario base",
-            min_value=0.01,
-            value=float(empleado.salario_base),
-            step=100.00
-        )
+       nuevo_salario = st.number_input(
+           "Salario base",
+           min_value=0.01,
+           value=float(empleado.salario_base),
+           step=100.00
+       )
 
-        nuevo_bono = st.number_input(
-            "Porcentaje de bono (%)",
-            min_value=0.0,
-            max_value=100.0,
-            value=float(empleado.porcentaje_bono),
-            step=1.0
-        )
+       nuevo_bono = st.number_input(
+           "Porcentaje de bono (%)",
+           min_value=0.0,
+           max_value=100.0,
+           value=float(empleado.porcentaje_bono),
+           step=1.0
+       )
 
-        nuevo_descuento = st.number_input(
-            "Porcentaje de descuento (%)",
-            min_value=0.0,
-            max_value=100.0,
-            value=float(empleado.porcentaje_descuento),
-            step=1.0
-        )
+       nuevo_descuento = st.number_input(
+           "Porcentaje de descuento (%)",
+           min_value=0.0,
+           max_value=100.0,
+           value=float(empleado.porcentaje_descuento),
+           step=1.0
+       )
 
-        if st.button("Actualizar empleado"):
+       if st.button("Actualizar empleado"):
 
-            if nuevo_nombre.strip() == "":
-                st.error("El nombre no puede estar vacío.")
+           if nuevo_nombre.strip() == "":
+               st.error("El nombre no puede estar vacío.")
 
-            else:
+           else:
 
-                try:
+               try:
 
-                    empleado_actualizado = Empleado(
-                        nombre=nuevo_nombre,
-                        salario_base=nuevo_salario,
-                        porcentaje_bono=nuevo_bono,
-                        porcentaje_descuento=nuevo_descuento
-                    )
+                   empleado_actualizado = Empleado(
+                       nombre=nuevo_nombre,
+                       salario_base=nuevo_salario,
+                       porcentaje_bono=nuevo_bono,
+                       porcentaje_descuento=nuevo_descuento
+                   )
 
-                    indice = st.session_state.empleados.index(
-                        empleado
-                    )
+                   indice = st.session_state.empleados.index(
+                       empleado
+                   )
 
-                    st.session_state.empleados[indice] = (
-                        empleado_actualizado
-                    )
+                   st.session_state.empleados[indice] = (
+                       empleado_actualizado
+                   )
 
-                    st.success(
-                        "Empleado actualizado correctamente."
-                    )
+                   st.success(
+                       "Empleado actualizado correctamente."
+                   )
 
-                    st.rerun()
+                   st.rerun()
 
-                except ValueError as e:
-                    st.error(str(e))
+               except ValueError as e:
+                   st.error(str(e))
 
-  # Opción eliminar
+ # Opción eliminar
 
-  elif opcion == "Eliminar empleado":
+ elif opcion == "Eliminar empleado":
 
-    st.header("Eliminar empleado")
+   st.header("Eliminar empleado")
 
-    if len(st.session_state.empleados) == 0:
+   if len(st.session_state.empleados) == 0:
 
-        st.info("No hay empleados registrados para eliminar.")
+       st.info("No hay empleados registrados para eliminar.")
 
-    else:
+   else:
 
-        nombres = [
-            empleado.nombre
-            for empleado in st.session_state.empleados
-        ]
+       nombres = [
+           empleado.nombre
+           for empleado in st.session_state.empleados
+       ]
 
-        nombre_eliminar = st.selectbox(
-            "Selecciona el empleado:",
-            nombres
-        )
+       nombre_eliminar = st.selectbox(
+           "Selecciona el empleado:",
+           nombres
+       )
 
-        if st.button("Eliminar empleado"):
+       if st.button("Eliminar empleado"):
 
-            st.session_state.empleados = [
-                empleado
-                for empleado in st.session_state.empleados
-                if empleado.nombre != nombre_eliminar
-            ]
+           st.session_state.empleados = [
+               empleado
+               for empleado in st.session_state.empleados
+               if empleado.nombre != nombre_eliminar
+           ]
 
-            st.success(
-                f"El empleado {nombre_eliminar} fue eliminado correctamente."
-            )
+           st.success(
+               f"El empleado {nombre_eliminar} fue eliminado correctamente."
+           )
 
-            st.rerun()
+           st.rerun()
