@@ -25,6 +25,8 @@ if modulos == "Home":
 elif modulos == "Ejercicio 1":
   st.title("Bienvenido al módulo de Ejercicio 1 – Flujo de caja con listas")
 
+  st.markdown("""Este ejercicio registra movimientos financieros utilizando una lista.\nCada movimiento contiene un concepto, tipo de movimiento y monto. Finalmente, la aplicación calcula los ingresos, gastos y saldo final.""")
+
   # -------------------------
   # Registro del movimiento
   # -------------------------
@@ -200,6 +202,13 @@ elif modulos == "Ejercicio 2":
       )
   else:
     st.info("Aún no hay datos registrados.")
+
+if saldo_final > 0:
+    st.success("El flujo de caja está a favor.")
+elif saldo_final < 0:
+    st.error("El flujo de caja está en contra.")
+else:
+    st.info("El flujo de caja está equilibrado.")
 
 elif modulos == "Ejercicio 3":
   st.title("Bienvenido al módulo de Ejercicio 3 – Uso de funciones desde una librería externa")
