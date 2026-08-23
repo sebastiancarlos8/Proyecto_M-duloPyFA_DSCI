@@ -230,21 +230,21 @@ elif modulos == "Ejercicio 3":
   monto_inicial = st.number_input(
     "Monto inicial ($)",
     min_value=0.01,
-    value=1000.00,
+    value=5000.00,
     step=100.00
   )
 
   tasa_anual_pct = st.number_input(
       "Tasa anual (%)",
       min_value=0.01,
-      value=5.00,
+      value=2.75,
       step=0.5
   )
   
   anios = st.number_input(
       "Número de años",
       min_value=0.1,
-      value=5.0,
+      value=3.0,
       step=0.5
   )
   
@@ -340,7 +340,7 @@ else:
    salario_base = st.number_input(
         "Salario base",
         min_value=0.01,
-        value=1000.00,
+        value=1130.00,
         step=100.00
    )
 
