@@ -20,7 +20,7 @@ if modulos == "Home":
   st.subheader("Descripción del proyecto")
   st.markdown("""Portafolio de ejercicios que muestran los conocimientos aplicados en Python, mediantes casuísticas de la vida cotidiana que implique el uso respecto a listas, registros con NumPy, arrays, DataFrame, librerías externas y clases.""")
   st.subheader("Tecnologías utilizadas")
-  st.markdown("""""")
+  st.markdown("""Para el presente proyecto, se utilizaron las siguientes teconologías.\n* Github\n* Streamli\n * Python\n* Librerías Python: Numpy - Pandas - Librerías externas\n * POO""")
   
 elif modulos == "Ejercicio 1":
   st.title("Bienvenido al módulo de Ejercicio 1 – Flujo de caja con listas")
