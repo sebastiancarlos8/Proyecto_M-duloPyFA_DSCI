@@ -16,11 +16,11 @@ if modulos == "Home":
   st.subheader("Elaborado por")
   st.write("**Nombre completo:** David Sebastian Carlos Ipanaque")
   st.subheader("Información general")
-  st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en análitica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos. \nApasionado por la lógica, recursos humanos, uso de datos masivos y programación.""")
+  st.markdown("""Egresado de la carrera de Ingeniería Industrial, con experiencia en analítica de datos en el sector retail, consumo masivo y seguros, dentro del área comercial y de recursos humanos. \nApasionado por la lógica, recursos humanos, uso de datos masivos y programación.""")
   st.subheader("Descripción del proyecto")
-  st.markdown("""Portafolio de ejercicios que muestran los conocimientos aplicados en Python, mediantes casuísticas de la vida cotidiana que implique el uso respecto a listas, registros con NumPy, arrays, DataFrame, librerías externas y clases.""")
-  st.subheader("Tecnologías utilizadas")
-  st.markdown("""Para el presente proyecto, se utilizaron las siguientes teconologías.\n* Github\n* Streamlit\n * Google Colab - Python\n* Librerías Python: Numpy - Pandas - Librerías externas\n * POO""")
+  st.markdown("""Portafolio de ejercicios que muestran los conocimientos aplicados en Python, mediante casuísticas de la vida cotidiana que implique el uso respecto a listas, registros con NumPy, arrays, DataFrame, librerías externas y clases.""")
+  st.subheader("🛠️ Tecnologías utilizadas")
+  st.markdown("""Para el presente proyecto, se utilizaron las siguientes tecnologías.\n- 🔗 GitHub\n- 🎨 Streamlit\n- 🐍 Google Colab - Python\n- 🔢 NumPy\n- 🐼 Pandas\n- 📚 Librerías externas\n- 🧩 Programación Orientada a Objetos(POO)""")
   
 elif modulos == "Ejercicio 1":
   st.title("Bienvenido al módulo de Ejercicio 1 – Flujo de caja con listas")
