@@ -25,7 +25,7 @@ if modulos == "Home":
 elif modulos == "Ejercicio 1":
   st.title("Bienvenido al módulo de Ejercicio 1 – Flujo de caja con listas")
 
-  st.markdown("""Este ejercicio registra movimientos financieros utilizando una lista.\nCada movimiento contiene un concepto, tipo de movimiento y monto. Finalmente, la aplicación calcula los ingresos, gastos y saldo final.""")
+  st.markdown("""Este ejercicio registra movimientos financieros utilizando una lista.\nCada movimiento contiene un concepto, tipo de movimiento y monto.\nFinalmente, la aplicación calcula los ingresos, gastos y saldo final.""")
 
   # -------------------------
   # Registro del movimiento
