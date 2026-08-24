@@ -108,10 +108,14 @@ elif modulos == "Ejercicio 1":
       st.info("El flujo de caja está equilibrado.")
 
   st.subheader("📋 Flujos realizados")
+
+  df_flujos = pd.DataFrame(st.session_state.flujos)
   
   if len(st.session_state.flujos) > 0:
         st.dataframe(
-          st.session_state.flujos,
+          df_flujos.style.format({
+              "Monto": "S/ {:.2f}"
+          }),
           use_container_width=True,
           hide_index=True
       )
@@ -284,11 +288,11 @@ elif modulos == "Ejercicio 3":
         st.subheader("💰 Resultado")
 
         st.write(
-            f"**Valor futuro:** ${resultado['valor_futuro']:,.2f}"
+            f"**Valor futuro:** S/{resultado['valor_futuro']:,.2f}"
         )
 
         st.write(
-            f"**Interés ganado:** ${resultado['interes_ganado']:,.2f}"
+            f"**Interés ganado:** S/{resultado['interes_ganado']:,.2f}"
         )
 
         # Guardar resultado en el historial
@@ -313,7 +317,14 @@ elif modulos == "Ejercicio 3":
       df_historial = pd.DataFrame(st.session_state.historico_inversion)
   
       st.dataframe(
-          df_historial,
+      df_historial.style.format({
+              "Monto inicial": "S/ {:,.2f}",
+              "Valor futuro": "S/ {:,.2f}",
+              "Interés ganado": "S/ {:,.2f}",
+              "Tasa anual (%)": "{:.2f}%",
+              "Años": "{:.0f}",
+              "Capitalizaciones/año": "{:.0f}"
+          }),
           use_container_width=True,
           hide_index=True
       )
