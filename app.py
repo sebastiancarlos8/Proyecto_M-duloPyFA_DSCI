@@ -237,7 +237,7 @@ elif modulos == "Ejercicio 3":
    
   st.subheader("📝 Datos de la inversión")
   monto_inicial = st.number_input(
-    "Monto inicial ($)",
+    "Monto inicial (S/)",
     min_value=0.01,
     value=5000.00,
     step=100.00
@@ -322,10 +322,14 @@ elif modulos == "Ejercicio 3":
       st.info("ℹ️ Todavía no se han realizado cálculos.")
   
 else:
- st.title("👤 Ejercicio 4 – Clases externas y CRUD")
+ st.title("👤 Gestión de bonos para empleados")
 
- st.markdown("""Este ejercicio implementa un CRUD utilizando la clase 'Empleado' desde una librería externa (librería de clases).\nLa aplicación permite crear, consultar, actualizar y eliminar
-    empleados, utilizando los atributos y métodos definidos en la clase.
+ st.markdown("""En este módulo se desarrolló un sistema básico para la gestión de empleados. 
+
+  La aplicación permite crear y gestionar los registros. El usuario puede registrar empleados indicando su nombre, salario base, porcentaje de bono 
+  y porcentaje de descuento. Además, puede consultar los registros, actualizar su información y eliminar empleados.
+  
+  La clase permite calcular el bono, descuento y salario neto de cada empleado, cuyos resultados son presentados de forma organizada en un DataFrame.
     """)
 
  if "empleados" not in st.session_state:
