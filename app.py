@@ -122,9 +122,12 @@ elif modulos == "Ejercicio 1":
 
 elif modulos == "Ejercicio 2":
   
-  st.title("📦 Ejercicio 2 – NumPy, Arrays y DataFrame")
+  st.title("📦 Registro de productos"")
 
-  st.markdown("""En este ejercicio se registrarán productos utilizando widgets de Streamlit. La información será almacenada en arreglos de NumPy y posteriormente convertida en un DataFrame de pandas para mostrar los registros actualizados.""")
+  st.markdown("""En este módulo se presenta un formulario para registrar productos y obtener el valor total de cada registro a partir de su precio y cantidad.
+
+  La información ingresada se almacena inicialmente en diferentes arrays de NumPy y posteriormente se almacena en un DataFrame de pandas para facilitar su visualización y organización. Cada vez que se agrega 
+  un producto, la tabla se actualiza mostrando la información registrada.""")
   
   if "nombres" not in st.session_state:
       st.session_state.nombres = np.array([])
