@@ -23,11 +23,12 @@ if modulos == "Home":
   st.markdown("""Para el presente proyecto, se utilizaron las siguientes tecnologías.\n- 🔗 GitHub\n- 🎨 Streamlit\n- 🐍 Google Colab - Python\n- 🔢 NumPy\n- 🐼 Pandas\n- 📚 Librerías externas\n- 🧩 Programación Orientada a Objetos(POO)""")
   
 elif modulos == "Ejercicio 1":
-  st.title("💰 Ejercicio 1 – Flujo de caja con listas")
+  st.title("💰 Control de Flujo de Caja")
 
-  st.markdown("""Este ejercicio registra movimientos financieros utilizando una lista.\nCada movimiento contiene un concepto, tipo de movimiento y monto.
-  
-  \nFinalmente, la aplicación calcula los ingresos, gastos y saldo final e indica si el flujo de caja se encuentra a favor, en contra o equilibrado.""")
+  st.markdown("""El módulo muestra un sistema para registrar y controlar movimientos financieros.\nEs necesario ingresar el concepto, tipo de movimiento e importe, clasificándolo como ingreso o gasto.
+
+  Los registros se almacenan en una lista y posteriormente se procesan para obtener el total de ingresos, total de gastos y saldo final. Finalmente, el sistema interpreta el resultado e indica si el flujo de caja
+  se encuentra a favor, en contra o equilibrado.""")
 
   # -------------------------
   # Registro del movimiento
