@@ -128,7 +128,7 @@ elif modulos == "Ejercicio 2":
   
   st.title("📦 Registro de productos")
 
-  st.markdown("""En este módulo se presenta un formulario para registrar productos y obtener el valor total de cada registro a partir de su precio y cantidad.
+  st.markdown("""En este módulo se presenta un formulario para registrar productos de tipo electrónicos, oficina, accesorios y otros, además de obtener el valor total de cada registro a partir de su precio y cantidad.
 
   La información ingresada se almacena inicialmente en diferentes arrays de NumPy y posteriormente se almacena en un DataFrame de pandas para facilitar su visualización y organización. Cada vez que se agrega 
   un producto, la tabla se actualiza mostrando la información registrada.""")
