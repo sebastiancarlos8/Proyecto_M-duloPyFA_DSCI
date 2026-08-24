@@ -218,9 +218,16 @@ elif modulos == "Ejercicio 2":
     st.info("ℹ️ Aún no hay datos registrados.")
 
 elif modulos == "Ejercicio 3":
-  st.title("📈 Ejercicio 3 – Funciones externas")
+  st.title("📈 Simulador de inversión")
 
-  st.markdown("""En este ejercicio se utiliza una función de una librería externa para calcular el valor futuro de una inversión mediante interés compuesto.\nEl resultado de cada cálculo se almacena en un histórico.""")
+  st.markdown("""En este módulo se desarrolló un pequeño simulador para estimar el crecimiento de una inversión mediante el cálculo de interés compuesto.
+  
+  El usuario puede ingresar el monto inicial, la tasa anual, el número de años y la cantidad de 
+  capitalizaciones por año. Estos parámetros son enviados a una función desarrollada en una librería externa, 
+  que calcula el valor futuro y el interés generado.
+  
+  Cada cálculo realizado se almacena en un histórico y posteriormente se presenta mediante un DataFrame 
+  para facilitar su consulta.""")
 
   funcion = st.selectbox(
     "Seleccione la función:",
