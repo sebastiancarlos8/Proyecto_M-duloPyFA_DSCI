@@ -21,7 +21,9 @@ if modulos == "Home":
   st.markdown("""Portafolio de ejercicios que muestran los conocimientos adquiridos en Python, mediante casuísticas de la vida cotidiana que implique el uso respecto a listas, arrays de NumPy, DataFrames, librerías externas y clases.""")
   st.subheader("🛠️ Tecnologías utilizadas")
   st.markdown("""Para el presente proyecto, se utilizaron las siguientes tecnologías.\n- 🔗 GitHub\n- 🎨 Streamlit\n- 🐍 Google Colab - Python\n- 🔢 NumPy\n- 🐼 Pandas\n- 📚 Librerías externas\n- 🧩 Programación Orientada a Objetos(POO)""")
-  
+
+# EJERCICIO 1
+
 elif modulos == "Ejercicio 1":
   st.title("💰 Control de Flujo de Caja")
 
@@ -30,9 +32,9 @@ elif modulos == "Ejercicio 1":
   Los registros se almacenan en una lista y posteriormente se procesan para obtener el total de ingresos, total de gastos y saldo final. Finalmente, el sistema interpreta el resultado e indica si el flujo de caja
   se encuentra a favor, en contra o equilibrado.""")
 
-  # -------------------------
-  # Registro del movimiento
-  # -------------------------
+  # _______________________
+  # Registro del movimiento por realizarse (ingreso o gasto)
+  
 
   if "flujos" not in st.session_state:
     st.session_state.flujos = []
@@ -67,9 +69,8 @@ elif modulos == "Ejercicio 1":
 
       st.success("✅ Movimiento registrado correctamente.")
 
-  # -------------------------
+  # __________________
   # Cálculos
-  # -------------------------
 
   total_ingresos = sum(
     flujo["Monto"]
@@ -85,6 +86,7 @@ elif modulos == "Ejercicio 1":
 
   saldo_final = total_ingresos - total_gastos
 
+  #__________________
   # Resumen de flujos
   
   st.subheader("📊 Resumen del flujo de caja")
@@ -107,6 +109,10 @@ elif modulos == "Ejercicio 1":
   else:
       st.info("El flujo de caja está equilibrado.")
 
+
+  # _____________________
+  # Muestra los movimientos/flujos realizados
+  
   st.subheader("📋 Flujos realizados")
 
   df_flujos = pd.DataFrame(st.session_state.flujos)
@@ -123,6 +129,7 @@ elif modulos == "Ejercicio 1":
   else:
     st.info("ℹ️ No hay movimientos registrados.")
 
+# EJERCICIO 2
 
 elif modulos == "Ejercicio 2":
   
@@ -132,6 +139,9 @@ elif modulos == "Ejercicio 2":
 
   La información ingresada se almacena inicialmente en diferentes arrays de NumPy y posteriormente se almacena en un DataFrame de pandas para facilitar su visualización y organización. Cada vez que se agrega 
   un producto, la tabla se actualiza mostrando la información registrada.""")
+
+  # _________________________
+  # Se crean los array históricos para las variables
   
   if "nombres" not in st.session_state:
       st.session_state.nombres = np.array([])
@@ -148,6 +158,7 @@ elif modulos == "Ejercicio 2":
   if "totales" not in st.session_state:
       st.session_state.totales = np.array([])
   
+  # _______________________
   # Registro de formulario
   
   st.subheader("📝 Registro de producto")
@@ -167,6 +178,7 @@ elif modulos == "Ejercicio 2":
       step=1
   )
   
+  # ___________________________
   # Botón para agregar producto
   
   if st.button("➕ Agregar producto"):
@@ -183,6 +195,7 @@ elif modulos == "Ejercicio 2":
     else:
       total = Precio * Cantidad
   
+      # ________________________________
       # Agregar información a los arrays
   
       st.session_state.nombres = np.append(st.session_state.nombres,Nombre_producto.strip())
@@ -193,7 +206,9 @@ elif modulos == "Ejercicio 2":
       st.success("✅ Producto agregado correctamente.")
   
       
-      
+  # ______________________________________
+  # Almacena los array en un dataframe(df)
+  
   df = pd.DataFrame({
         "Nombre del producto": st.session_state.nombres,
         "Categoría": st.session_state.categorias,
@@ -203,10 +218,9 @@ elif modulos == "Ejercicio 2":
   })
       
       
-    # --------------------------------------------------
-    # Mostrar DataFrame
-    # --------------------------------------------------
-      
+  # _____________________________________________________________
+  # Muestra los registros y en caso no existir muestra un mensaje
+          
   st.subheader("📋 Registros actualizados")
   if not df.empty:
       st.dataframe(
@@ -221,6 +235,8 @@ elif modulos == "Ejercicio 2":
   else:
     st.info("ℹ️ Aún no hay datos registrados.")
 
+# EJERCICIO 3
+
 elif modulos == "Ejercicio 3":
   st.title("📈 Simulador de inversión")
 
@@ -231,14 +247,17 @@ elif modulos == "Ejercicio 3":
   Cada cálculo realizado se almacena en un histórico y posteriormente se presenta mediante un DataFrame 
   para facilitar su consulta.""")
 
-  funcion = st.selectbox(
-    "Seleccione la función:",
-    ["calcular_valor_futuro"]
-  )
+  funcion = st.selectbox("Seleccione la función:",["calcular_valor_futuro"])
 
+  # __________________________________
+  # Se crea la lista para el histórico
+  
   if "historico_inversion" not in st.session_state:
       st.session_state.historico_inversion = []
    
+  # _________
+  # Variables
+  
   st.subheader("📝 Datos de la inversión")
   monto_inicial = st.number_input(
     "Monto inicial (S/)",
@@ -268,6 +287,8 @@ elif modulos == "Ejercicio 3":
       step=1
   )
   
+  # ____________________________________
+  # Se crea botón interactivo de cálculo
   
   if st.button("📈 Calcular valor futuro"):
 
@@ -287,15 +308,12 @@ elif modulos == "Ejercicio 3":
 
         st.subheader("💰 Resultado")
 
-        st.write(
-            f"**Valor futuro:** S/{resultado['valor_futuro']:,.2f}"
-        )
+        st.write(f"**Valor futuro:** S/{resultado['valor_futuro']:,.2f}")
 
-        st.write(
-            f"**Interés ganado:** S/{resultado['interes_ganado']:,.2f}"
-        )
+        st.write(f"**Interés ganado:** S/{resultado['interes_ganado']:,.2f}")
 
         # Guardar resultado en el historial
+        
         registro = {
             "Monto inicial": monto_inicial,
             "Tasa anual (%)": tasa_anual_pct,
@@ -331,7 +349,9 @@ elif modulos == "Ejercicio 3":
   
   else:
       st.info("ℹ️ Todavía no se han realizado cálculos.")
-  
+
+# EJERCICIO 4
+
 else:
  st.title("👤 Gestión de bonos para empleados")
 
