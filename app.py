@@ -122,7 +122,7 @@ elif modulos == "Ejercicio 1":
 
 elif modulos == "Ejercicio 2":
   
-  st.title("📦 Registro de productos"")
+  st.title("📦 Registro de productos")
 
   st.markdown("""En este módulo se presenta un formulario para registrar productos y obtener el valor total de cada registro a partir de su precio y cantidad.
 
@@ -222,9 +222,7 @@ elif modulos == "Ejercicio 3":
 
   st.markdown("""En este módulo se desarrolló un pequeño simulador para estimar el crecimiento de una inversión mediante el cálculo de interés compuesto.
   
-  El usuario puede ingresar el monto inicial, la tasa anual, el número de años y la cantidad de 
-  capitalizaciones por año. Estos parámetros son enviados a una función desarrollada en una librería externa, 
-  que calcula el valor futuro y el interés generado.
+  El usuario debe ingresar el monto inicial, la tasa anual, el número de años y la cantidad de capitalizaciones por año.\nEstos parámetros son enviados a una función desarrollada en una librería externa, que calcula el valor futuro y el interés generado.
   
   Cada cálculo realizado se almacena en un histórico y posteriormente se presenta mediante un DataFrame 
   para facilitar su consulta.""")
